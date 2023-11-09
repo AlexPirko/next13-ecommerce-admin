@@ -10,13 +10,18 @@ export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElemen
 
     const routes = [
         {
+            href: `/${params.storeId}`,
+            label: 'Overview',
+            active: pathname === `/${params.storeId}`,
+        },
+        {
             href: `/${params.storeId}/settings`,
             label: 'Settings',
             active: pathname === `/${params.storeId}/settings`,
         },
     ];
     return (
-        <nav className={cn('flex items-center space-x-4 lg:space-x-6', className)}>
+        <nav className={cn('flex items-center ml-5 space-x-4 lg:space-x-6', className)}>
             {routes.map((route) => (
                 <Link
                     key={route.href}

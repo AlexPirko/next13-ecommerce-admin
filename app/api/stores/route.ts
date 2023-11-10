@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
         return NextResponse.json(store);
     } catch (error) {
-        console.log('[SORES_POST]', error);
+        console.log('[STORES_POST]', error);
         return new NextResponse('Interal error', { status: 500 });
     }
 }

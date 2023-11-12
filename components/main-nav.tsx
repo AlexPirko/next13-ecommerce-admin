@@ -4,7 +4,10 @@ import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 
-export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
+export function MainNav({
+    className,
+    ...props
+}: React.HTMLAttributes<HTMLElement>) {
     const pathname = usePathname();
     const params = useParams();
 
@@ -20,20 +23,37 @@ export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElemen
             active: pathname === `/${params.storeId}/billboards`,
         },
         {
+            href: `/${params.storeId}/categories`,
+            label: 'Categories',
+            active: pathname === `/${params.storeId}/categories`,
+        },
+        {
+            href: `/${params.storeId}/sizes`,
+            label: 'Sizes',
+            active: pathname === `/${params.storeId}/sizes`,
+        },
+        {
             href: `/${params.storeId}/settings`,
             label: 'Settings',
             active: pathname === `/${params.storeId}/settings`,
         },
     ];
     return (
-        <nav className={cn('flex items-center ml-5 space-x-4 lg:space-x-6', className)} {...props}>
+        <nav
+            className={cn(
+                'flex items-center ml-5 space-x-4 lg:space-x-6',
+                className,
+            )}
+            {...props}>
             {routes.map((route) => (
                 <Link
                     key={route.href}
                     href={route.href}
                     className={cn(
                         'text-sm font-medium transition-colors hover:text-primary',
-                        route.active ? 'text-black dark:text-white' : 'text-muted-foreground',
+                        route.active
+                            ? 'text-black dark:text-white'
+                            : 'text-muted-foreground',
                     )}>
                     {route.label}
                 </Link>
